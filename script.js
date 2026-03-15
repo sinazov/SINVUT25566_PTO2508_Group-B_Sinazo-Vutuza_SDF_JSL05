@@ -34,3 +34,15 @@ const initialTasks = [
   }
 ];
 
+// ===============================
+// DOM ELEMENTS
+// ===============================
+const columns = document.querySelectorAll(".column");
+
+const modal = document.getElementById("task-modal");
+const closeModalBtn = document.getElementById("close-modal-btn");
+
+const titleInput = document.getElementById("task-title");
+const descInput = document.getElementById("task-desc");
+const statusSelect = document.getElementById("task-status");
+
