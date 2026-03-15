@@ -74,3 +74,53 @@ function createTaskCard(task) {
 
   return card;
 }
+// ===============================
+// CREATE TASK CARD
+// ===============================
+
+/**
+ * Creates a DOM element representing a task card.
+ * @param {Object} task - Task object from initialTasks
+ * @returns {HTMLElement} Task card element
+ */
+function createTaskCard(task) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.textContent = task.title;
+
+  card.addEventListener("click", () => {
+    openTaskModal(task);
+  });
+
+  return card;
+}
+
+// ===============================
+// RENDER TASKS
+// ===============================
+
+/**
+ * Inserts tasks into their correct columns
+ * depending on their status.
+ */
+function renderTasks() {
+  const todoColumn = columns[0];
+  const doingColumn = columns[1];
+  const doneColumn = columns[2];
+
+  initialTasks.forEach((task) => {
+    const card = createTaskCard(task);
+
+    if (task.status === "todo") {
+      todoColumn.appendChild(card);
+    }
+
+    if (task.status === "doing") {
+      doingColumn.appendChild(card);
+    }
+
+    if (task.status === "done") {
+      doneColumn.appendChild(card);
+    }
+  });
+}
