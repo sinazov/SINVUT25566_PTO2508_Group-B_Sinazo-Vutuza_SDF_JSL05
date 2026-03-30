@@ -126,5 +126,73 @@ function renderTasks() {
     }
   });
 }
+// ===============================
+// MODAL MANAGEMENT
+// ===============================
 
+function openTaskModal(task) {
+  titleInput.value = task.title;
+  descInput.value = task.description;
+  statusSelect.value = task.status;
+
+  modal.showModal();
+}
+
+function closeModal() {
+  modal.close();
+  resetModalForm();
+}
+
+// ===============================
+// EVENT LISTENERS
+// ===============================
+
+// Close modal button
+closeModalBtn.addEventListener("click", closeModal);
+
+// Add Task button opens empty modal form
+addTaskBtn.addEventListener("click", () => {
+  resetModalForm();
+  modal.showModal();
+});
+
+taskForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const title = titleInput.value.trim();
+  const description = descInput.value.trim();
+  const status = statusSelect.value;
+
+  if (!title) {
+    alert("Please enter a task title.");
+    return;
+  }
+
+  const newTask = {
+    id: Date.now(), 
+    title,
+    description,
+    status,
+  };
+
+  tasks.push(newTask);
+  saveTasksToStorage();
+  renderTasks();
+
+  modal.close();
+  resetModalForm();
+});
+
+// ===============================
+// INITIALIZATION
+// ===============================
+
+/**
+ * Initialize app by rendering tasks loaded from localStorage.
+ */
+function init() {
+  renderTasks();
+}
+
+document.addEventListener("DOMContentLoaded", init);
 
