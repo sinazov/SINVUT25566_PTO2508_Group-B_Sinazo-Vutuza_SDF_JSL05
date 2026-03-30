@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Board</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" /> 
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <!-- Laptop logo -->
+        <div class="logo laptop-logo">
+          <img src="./assets/logo-light.svg" alt="Kanban Logo"/>
+        </div>
+
+        <h4 class="boards-title">ALL BOARDS (1)</h4>
+        <button class="board-btn active">Launch Career</button>
+      </aside>
+
+      <!-- Main Content -->
+      <section class="content">
+        <!-- Header -->
+        <header class="header">
+          <div class="board-title">
+            <img class="board-favicon" src="./assets/favicon.svg" alt="logo" />
+            <h2>Launch Career</h2>
+        <button id="add-task-btn" class="add-task-btn">+ Add New Task</button>
+
+          </div>
+        </header>
+        <!-- Board -->
+        <main class="board">
+          <!-- TODO -->
+          <div class="column">
+            <div class="column-title">
+              <span class="dot todo"></span>
+              TODO (4)
+            </div>
+            <div id="todo-column"></div>
+          </div>
+
+          <!-- DOING -->
+          <div class="column">
+            <div class="column-title">
+              <span class="dot doing"></span>
+              DOING (3)
+            </div>
+            <div id="doing-column"></div>
+          </div>
+
+          <!-- DONE -->
+          <div class="column">
+            <div class="column-title">
+              <span class="dot done"></span>
+              DONE (3)
+            </div>
+            <div id="done-column"></div>
+          </div>
+        </main>
+      </section>
+    </div>
+    <dialog id="task-modal">
+      <form method="dialog" id="task-form">
+        <div class="modal-header">
+    <h3>Add new task</h3>
+    <button type="button" class="close-btn" id="close-modal-btn">&times;</button>
+  </div>
+
+  <label for="task-title">Title</label>
+  <input type="text" id="task-title" name="title" required />
+
+  <label for="task-desc">Description</label>
+  <textarea id="task-desc" name="description" rows="4"></textarea>
+
+  <label for="task-status">Status</label>
+  <select id="task-status" name="status" required>
+    <option value="todo">todo</option>
+    <option value="doing">doing</option>
+    <option value="done">done</option>
+  </select>
+  <button type="submit" class="create-task-btn">Create Task</button>
+      </form>
+    </dialog>
+    <script src="script.js"></script>
+  </body>
+</html>
